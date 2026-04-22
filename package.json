@@ -1,0 +1,16 @@
+{
+  "name": "clear-acord-standalone",
+  "version": "1.0.0",
+  "description": "Standalone ACORD Forms Library — list, fill, and generate PDF",
+  "private": true,
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "dev": "pnpm --filter clear-acord dev",
+    "build": "pnpm --filter clear-acord build",
+    "start": "pnpm --filter clear-acord start",
+    "type-check": "pnpm -r type-check"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,25 @@
+/* Clear ACORD — main stylesheet (Tailwind v4) */
+
+@import "tailwindcss";
+
+/* Scan shared packages so Tailwind generates CSS for their classes */
+@source "../../../../packages/acord/src/**/*.{ts,tsx}";
+
+/* ---- Theme ---- */
+@theme {
+  --color-brand-50:  #E5F0FA;
+  --color-brand-100: #CCE2F5;
+  --color-brand-200: #99C5EB;
+  --color-brand-500: #007FE0;
+  --color-brand-600: #006FCF;
+  --color-brand-700: #005BAA;
+  --color-brand-900: #003360;
+  --font-sans: system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: rgb(249 250 251);
+    color: rgb(17 24 39);
+  }
+}
