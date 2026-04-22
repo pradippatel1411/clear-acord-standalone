@@ -205,40 +205,39 @@ export async function generateAcordPDF(
           });
         }
       } else {
-        // Stamp text value — sanitize newlines and special chars
-        const textValue = String(value)
-          .replace(/\r\n/g, " ")
-          .replace(/\n/g, " ")
-          .replace(/\r/g, " ")
-          .replace(/\t/g, " ")
-          .replace(/[^\x20-\x7E]/g, "");  // Remove any non-printable ASCII
         const maxWidth = field.ocrCoords.width
           ? (field.ocrCoords.width / OCR_WIDTH) * pageW
           : 200;
 
-        // Truncate text if it would overflow
-        let displayText = textValue;
-        const textWidth = font.widthOfTextAtSize(displayText, fontSize);
-        if (textWidth > maxWidth) {
-          // Simple truncation — cut characters until it fits
-          while (
-            font.widthOfTextAtSize(displayText + "...", fontSize) > maxWidth &&
-            displayText.length > 0
-          ) {
-            displayText = displayText.slice(0, -1);
-          }
-          if (displayText.length < textValue.length) {
-            displayText += "...";
-          }
-        }
+        // Textareas preserve newlines — each line is stamped separately.
+        // Non-textarea fields flatten newlines to a single line.
+        const isTextarea = field.fieldType === "textarea";
+        const rawValue = String(value).replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+        const sanitizedLines = (isTextarea ? rawValue.split("\n") : [rawValue.replace(/\n/g, " ")])
+          .map((ln) => ln.replace(/\t/g, " ").replace(/[^\x20-\x7E]/g, ""));
 
-        page.drawText(displayText, {
-          x: pdfX,
-          y: pdfY - fontSize,
-          size: fontSize,
-          font: font,
-          color: rgb(0, 0, 0),
-        });
+        const lineHeight = fontSize * 1.2;
+        for (let li = 0; li < sanitizedLines.length; li++) {
+          let line = sanitizedLines[li];
+          // Truncate a line if it would overflow the field width
+          if (font.widthOfTextAtSize(line, fontSize) > maxWidth) {
+            while (
+              font.widthOfTextAtSize(line + "...", fontSize) > maxWidth &&
+              line.length > 0
+            ) {
+              line = line.slice(0, -1);
+            }
+            if (line.length > 0) line += "...";
+          }
+
+          page.drawText(line, {
+            x: pdfX,
+            y: pdfY - fontSize - li * lineHeight,
+            size: fontSize,
+            font: font,
+            color: rgb(0, 0, 0),
+          });
+        }
       }
 
       stampedCount++;

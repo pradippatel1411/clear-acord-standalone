@@ -5,14 +5,17 @@
 import type { AcordFormMapping } from "./types";
 
 import acord25_2016 from "../mappings/acord25_2016.json";
+import acord101_2008 from "../mappings/acord101_2008.json";
 import acord125 from "../mappings/acord125.json";
 import acord126 from "../mappings/acord126.json";
 
 const MAPPING_REGISTRY: Record<string, AcordFormMapping> = {
-  "25":      acord25_2016 as unknown as AcordFormMapping,
-  "25-2016": acord25_2016 as unknown as AcordFormMapping,
-  "125":     acord125 as unknown as AcordFormMapping,
-  "126":     acord126 as unknown as AcordFormMapping,
+  "25":        acord25_2016 as unknown as AcordFormMapping,
+  "25-2016":   acord25_2016 as unknown as AcordFormMapping,
+  "101":       acord101_2008 as unknown as AcordFormMapping,
+  "101-2008":  acord101_2008 as unknown as AcordFormMapping,
+  "125":       acord125 as unknown as AcordFormMapping,
+  "126":       acord126 as unknown as AcordFormMapping,
 };
 
 export function getFormMapping(

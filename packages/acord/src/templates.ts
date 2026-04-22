@@ -15,6 +15,10 @@ export const ACORD_TEMPLATES: Record<string, AcordTemplateConfig> = {
     formNumber: "25",
     pageUrls: [`${BASE}/acord25_2016.pdf`],
   },
+  "101": {
+    formNumber: "101",
+    pageUrls: [`${BASE}/acord_101_2008.pdf`],
+  },
   "125": {
     formNumber: "125",
     pageUrls: [`${BASE}/acord125_2016.pdf`],

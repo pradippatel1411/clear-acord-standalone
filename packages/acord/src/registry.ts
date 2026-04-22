@@ -6,6 +6,17 @@ import type { AcordFormInfo } from "./types";
 
 export const ACORD_FORMS: AcordFormInfo[] = [
   {
+    formNumber: "101",
+    title: "Additional Remarks Schedule",
+    shortTitle: "Additional Remarks",
+    pages: 1,
+    totalFields: 13,
+    hasMapping: true,
+    hasHtmlBuild: false,
+    validated: false,
+    status: "mapped",
+  },
+  {
     formNumber: "125",
     title: "Commercial Insurance Application",
     shortTitle: "Commercial App",

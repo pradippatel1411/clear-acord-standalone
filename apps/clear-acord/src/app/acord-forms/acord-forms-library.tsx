@@ -22,7 +22,9 @@ const ACORD_25_INFO: AcordFormInfo = {
 
 const AVAILABLE_FORMS: AcordFormInfo[] = [
   ACORD_25_INFO,
-  ...ACORD_FORMS.filter((f) => f.formNumber === "125" || f.formNumber === "126"),
+  ...ACORD_FORMS.filter(
+    (f) => f.formNumber === "101" || f.formNumber === "125" || f.formNumber === "126",
+  ),
 ];
 
 /* ── Status badge colour map ──────────────────────────────────── */
@@ -36,6 +38,7 @@ const STATUS_COLORS: Record<string, string> = {
 /* ── LOB labels for each form ─────────────────────────────────── */
 const LOB_MAP: Record<string, string> = {
   "25":  "All LOB",
+  "101": "All LOB",
   "125": "All LOB",
   "126": "GL",
 };

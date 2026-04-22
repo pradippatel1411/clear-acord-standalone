@@ -321,10 +321,10 @@ function SectionAccordion({
               <thead>
                 <tr className="border-b border-gray-200 text-[10px] font-semibold uppercase tracking-wide text-gray-400">
                   <th className="pb-2 pr-3 w-[120px]">Field ID</th>
-                  <th className="px-3 pb-2">Label / Meta</th>
+                  <th className="px-3 pb-2 w-[260px]">Label / Meta</th>
                   <th className="px-3 pb-2 w-[90px]">Type</th>
                   <th className="px-3 pb-2 w-[50px]">Req</th>
-                  <th className="px-3 pb-2 w-[200px]">Sample Value</th>
+                  <th className="px-3 pb-2">Sample Value</th>
                 </tr>
               </thead>
               <tbody>
@@ -421,9 +421,9 @@ function FieldRow({
           <textarea
             value={value}
             onChange={(e) => onChange(field.fieldId, e.target.value)}
-            rows={2}
+            rows={8}
             placeholder={field.label}
-            className="w-full rounded border border-gray-200 bg-white px-2.5 py-1.5 text-xs text-gray-700 placeholder:text-gray-300 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-100"
+            className="w-full min-w-[420px] rounded border border-gray-200 bg-white px-2.5 py-1.5 font-mono text-xs text-gray-700 placeholder:text-gray-300 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-100 whitespace-pre-wrap"
           />
         ) : (
           <input
